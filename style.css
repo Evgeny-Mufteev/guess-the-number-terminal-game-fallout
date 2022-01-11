@@ -1,0 +1,63 @@
+body {
+    font-family: "Vibur", sans-serif;
+    background: black;
+    color: white;
+}
+
+.container {
+    max-width: 1320px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 55px 0;
+    font-size: 24px;
+}
+
+
+.number-random-wrap {
+    font-size: 24px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.number-random {
+    padding: 15px;
+    cursor: pointer;
+}
+
+
+
+.text-info {
+    animation: flicker 1.5s infinite alternate;
+    color: #fff;
+  }
+  
+  @keyframes flicker {
+      
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+        text-shadow:
+        0 0 4px rgb(5, 241, 37),
+        0 0 11px rgb(4, 241, 95),
+        0 0 19px rgb(1, 255, 22),
+        0 0 40px #0fa,
+        0 0 80px #0fa,
+        0 0 90px #0fa,
+        0 0 100px #0fa,
+        0 0 150px #0fa;
+    
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
+  }
