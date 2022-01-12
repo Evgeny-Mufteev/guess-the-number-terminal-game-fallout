@@ -40,7 +40,7 @@ let addEventClick = (selectNumberByCopmuter) => {
       }
 
       drawMatches(selectNumberByCopmuter, el);
-      drawHealth();
+      // drawHealth();
     }
   });
 };
@@ -60,7 +60,18 @@ let drawMatches = (selectNumberByCopmuter, el) => {
 };
 
 //вывод кол-ва попыток
-let drawHealth = () => {};
+let drawHealth = (countHp) => {
+  let count = 1;
+  document.body.addEventListener("click", () => {
+    
+    if (count >= countHp){
+      alert("Количество попыток исчерпано, увы((");
+      location.reload();
+      return false;
+    }
+    count++;
+  })
+}
 
 // Главная функция в которой можно изменять параметры:
 // countElem - количество элементов
@@ -71,7 +82,7 @@ function start(countElem, countChartOnElem, countHp) {
     selectNumberByCopmuter = chooseRundomNumber(arrNum);
   drawNumber(arrNum);
   addEventClick(selectNumberByCopmuter);
-
+  drawHealth(countHp);
   console.log(selectNumberByCopmuter);
 }
 start(25, 5, 4);
