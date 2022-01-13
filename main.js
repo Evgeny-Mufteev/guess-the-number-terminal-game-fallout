@@ -27,8 +27,10 @@ let drawNumber = (arrNum) => {
 };
 
 // Отслеживание клика по элементу
-let addEventClick = (selectNumberByCopmuter) => {
+let addEventClick = (selectNumberByCopmuter, countHp) => {
+  const count = drawHealth();
   document.addEventListener("click", (e) => {
+    console.log('doc click')
     if (e.target.closest(".number-random")) {
       let el = e.target;
       el.style.color = "red";
@@ -38,7 +40,12 @@ let addEventClick = (selectNumberByCopmuter) => {
         location.reload();
         return;
       }
-
+      if (count() >= countHp) {
+        alert("Количество попыток исчерпано, увы((");
+        location.reload();
+        return false;
+      }
+			
       drawMatches(selectNumberByCopmuter, el);
       // drawHealth();
     }
@@ -60,18 +67,10 @@ let drawMatches = (selectNumberByCopmuter, el) => {
 };
 
 //вывод кол-ва попыток
-let drawHealth = (countHp) => {
+let drawHealth = () => {
   let count = 1;
-  document.body.addEventListener("click", (e) => {
-    
-    if (count >= countHp){
-      alert("Количество попыток исчерпано, увы((");
-      e.stopPropagation();
-      location.reload();
-      return false;
-    }
-    count++;
-  })
+  return () => count++;
+
 }
 
 // Главная функция в которой можно изменять параметры:
@@ -82,8 +81,8 @@ function start(countElem, countChartOnElem, countHp) {
   let arrNum = generatingNumbers(countElem),
     selectNumberByCopmuter = chooseRundomNumber(arrNum);
   drawNumber(arrNum);
-  addEventClick(selectNumberByCopmuter);
-  drawHealth(countHp);
+  addEventClick(selectNumberByCopmuter, countHp);
+
   console.log(selectNumberByCopmuter);
 }
 start(25, 5, 4);
