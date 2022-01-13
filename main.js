@@ -62,10 +62,11 @@ let drawMatches = (selectNumberByCopmuter, el) => {
 //вывод кол-ва попыток
 let drawHealth = (countHp) => {
   let count = 1;
-  document.body.addEventListener("click", () => {
+  document.body.addEventListener("click", (e) => {
     
     if (count >= countHp){
       alert("Количество попыток исчерпано, увы((");
+      e.stopPropagation();
       location.reload();
       return false;
     }
